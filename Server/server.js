@@ -7,7 +7,7 @@ bodyParser = require('body-parser');
 
 // Init mongoDB instance
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/giadb');
+mongoose.connect('mongodb://localhost/giadb', { useMongoClient: true });
 
 app.use(bodyParser.urlencoded({ 'extended': true}));
 app.use(bodyParser.json())

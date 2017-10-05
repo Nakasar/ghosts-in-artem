@@ -5,8 +5,9 @@ exports.list_users = function(req, res) {
     User.find({}, function(err, users) {
         if (err) {
             res.send(err);
-        }
-        res.json(users);
+        }else {
+            res.json(users);
+        };
     });
 };
 
@@ -15,16 +16,30 @@ exports.create_user = function(req, res) {
     new_user.save(function(err, user) {
         if (err) {
             res.send(err);
+        } else {
+            res.json(user);
         }
-        res.json(user);
     });
 };
 
-exports.read_user = function(req.res) {
-    User.findById(req.params.userId, function(err, task) {
+exports.read_user = function(req, res) {
+    User.findById(req.params.userId, function(err, user) {
         if (err) {
             res.send(err);
+        } else {
+            res.json(user);
         }
-        res.json(user);
     });
 }
+
+exports.delete_user = function(req, res) {
+    user.remove({
+        _id: req.params.userId
+    }, function(err, user) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.json({ message: 'User successfully deleted' })
+        }
+    });
+};
