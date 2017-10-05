@@ -1,0 +1,25 @@
+{
+  "name": "ghosts-in-artem",
+  "version": "1.0.0",
+  "description": "Server for Ghosts in Artem Project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nakasar/ghosts-in-artem.git"
+  },
+  "keywords": [
+    "Ghosts",
+    "In",
+    "Artem",
+    "Serve"
+  ],
+  "author": "Nakasar, LeMilitaire",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nakasar/ghosts-in-artem/issues"
+  },
+  "homepage": "https://github.com/Nakasar/ghosts-in-artem#readme"
+}
