@@ -1,0 +1,24 @@
+{
+  "name": "gia-raspy",
+  "version": "1.0.0",
+  "description": "bluetooth raspy",
+  "main": "test.js",
+  "scripts": {
+    "test": "test",
+    "start": "nodemon test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nakasar/ghosts-in-artem.git"
+  },
+  "author": "svernin acorda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nakasar/ghosts-in-artem/issues"
+  },
+  "homepage": "https://github.com/Nakasar/ghosts-in-artem#readme",
+  "dependencies": {
+    "node-gyp": "^3.6.2",
+    "nodemon": "^1.12.1"
+  }
+}
