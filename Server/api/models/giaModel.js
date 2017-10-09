@@ -11,9 +11,9 @@ var UserSchema = new Schema({
         type: String,
         default: Date.now
     },
-    phone_id: {
+    bt_mac: {
         type: String,
-        required: 'A user should have a phone id'
+        required: 'A user should have a mac address'
     },
     score: {
         type: String,
@@ -22,7 +22,7 @@ var UserSchema = new Schema({
     role: {
         type: [{
             type: String,
-            enum: ['master', 'ghosts', 'depinfo', 'others']
+            enum: ['mentor', 'master', 'ghosts', 'depinfo', 'others']
         }],
         default: ['others']
     },
@@ -32,7 +32,11 @@ var UserSchema = new Schema({
             enum: ['peon']
         }],
         default: ['peon']
-    }
+    },
+    connects: [{
+        date: Date,
+        station_id: String
+    }]
 });
 
 module.exports = mongoose.model('Users', UserSchema);
