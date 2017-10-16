@@ -2,7 +2,8 @@ var express = require('express'),
 app = express(),
 port = process.env.PORT || 3000,
 mongoose = require('mongoose'),
-user = require('./api/models/giaModel'),
+user = require('./api/models/UserModel'),
+station = require('./api/models/StationModel')
 bodyParser = require('body-parser');
 
 // Init mongoDB instance
