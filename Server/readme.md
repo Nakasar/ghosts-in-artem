@@ -38,6 +38,7 @@ Init project after cloning repository. Then proceed to start using `npm run star
 ### API
 Access to API endpoints on local machine using `http://localhost:3000/`.  
 Access users endpoint at `/users`, and specific user using `/users/<user_id>`. (Usage of postman chrome extension is recommended).
+Access stations endpoint at `/stations`, and specific station using `/stations/<station_id>`.
 
 #### Models
 
@@ -51,3 +52,9 @@ Access users endpoint at `/users`, and specific user using `/users/<user_id>`. (
 | role | String | user role in 'master', 'ghost', 'depinfo', 'other' |
 | profession | String | user profession in 'vampire', 'zombie'... |
 
+| **Stations** |  |  |
+| ---- | :---: | ---:|
+| stationid | uuid | id of station in database |
+| ip\_address | String | ip address of station |
+| mac\_address | String | mac address of station |
+| actions | [String] | array of available actions commands to be executed |
