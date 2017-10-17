@@ -1,0 +1,11 @@
+<h2>User list</h2>
+<ul class="users">
+    <li *ngFor="let user of users" (click)="onSelect(user)" [class.selected]="user == selectedUser">
+        <span class="badge">{{user.id}}</span> {{user.name}}
+    </li>
+</ul>
+
+<div *ngIf="selectedUser">
+  <h2>{{selectedUser.name | uppercase}}</h2>
+  <button (click)='gotoUser()'>View Details</button>
+</div>
