@@ -1,4 +1,9 @@
 export class User {
     id: number;
-    name: String;
+    first_name: String;
+    last_name: String;
+    nick_name: String;
+    phone_id: String;
+    role: String;
+    profession: String;
 }
