@@ -4,9 +4,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var StationSchema = new Schema({
-  id : {
+  name : {
     type : String,
-    required : 'A station should have an id'
+    required : 'A station should have a name.'
   },
   ip_address : {
     type : String,
