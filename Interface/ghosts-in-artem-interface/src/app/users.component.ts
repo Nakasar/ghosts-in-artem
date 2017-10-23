@@ -33,4 +33,13 @@ export class UsersComponent implements OnInit {
   gotoUser(): void {
     this.router.navigate(['/users', this.selectedUser.id]);
   }
+
+  delete(user: User): void {
+    this.userService
+      .deleteUser(user.id)
+      .then(() => {
+        this.users = this.users.filter(u => u !== user);
+        if (this.selectedUser === user) { this.selectedUser = null; }
+      });
+  }
 }

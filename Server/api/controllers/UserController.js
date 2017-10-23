@@ -11,6 +11,16 @@ exports.list_users = function(req, res) {
     });
 };
 
+exports.list_phones = function(req, res) {
+    User.find({},"bt_mac _id", function(err, users) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.json(users);
+        };
+    });
+};
+
 exports.create_user = function(req, res) {
     var new_user = new User(req.body);
     new_user.save(function(err, user) {
@@ -65,7 +75,7 @@ exports.user_connect_add = function(req, res) {
                     res.send(err);
                 }
 
-                res.send( { success : 'Connection taken into account' });
+                res.send( { success : true, user: user });
             });
         }
     })

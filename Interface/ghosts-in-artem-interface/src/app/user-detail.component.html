@@ -2,8 +2,20 @@
     <h2>{{user.name}} details!</h2>
     <div><label>id: </label>{{user.id}}</div>
     <div>
-      <label>name: </label>
-      <input [(ngModel)]="user.name" placeholder="name"/>
+      <label>Nickname: </label>
+      <input [(ngModel)]="user.nick_name" placeholder="nickname"/>
     </div>
+    <div>
+      <label>First Name: </label>
+      <input [(ngModel)]="user.first_name" placeholder="first name"/>
+    </div>
+    <div>
+      <label>Last Name: </label>
+      <input [(ngModel)]="user.last_name" placeholder="last name"/>
+    </div>
+    <div><label>Role: </label>{{user.role}}</div>
+    <div><label>Profession: </label>{{user.profession}}</div>
+    <div><label>Phone address: </label>{{user.phone_id}}</div>
+    <button (click)="save()">Save</button>
     <button (click)="goBack()">Back</button>
 </div>
