@@ -37,14 +37,15 @@ Init project after cloning repository. Then proceed to start using `npm run star
 
 ### API
 Access to API endpoints on local machine using `http://localhost:3000/`.  
-Access users endpoint at `/users`, and specific user using `/users/<user_id>`. (Usage of postman chrome extension is recommended).
+Access users endpoint at `/users`, and specific user using `/users/<user_id>`. (Usage of postman chrome extension is recommended).  
+Access list of users' phone bluetooth mac address using `/users/phones`.  
 Access stations endpoint at `/stations`, and specific station using `/stations/<station_id>`.
 
 #### Models
 
 | **Users** |  |  |
 | ---- | :---: | ---:|
-| userid | uuid | id of user in database |
+| userid _\_id_ | uuid | id of user in database |
 | first\_name | String | user name |
 | last\_name | String | user name |
 | nick\_name | String | user nickame |
@@ -54,7 +55,8 @@ Access stations endpoint at `/stations`, and specific station using `/stations/<
 
 | **Stations** |  |  |
 | ---- | :---: | ---:|
-| stationid | uuid | id of station in database |
+| stationid _\_id_ | uuid | id of station in database |
+| name | String | Station name |
 | ip\_address | String | ip address of station |
 | mac\_address | String | mac address of station |
 | actions | [String] | array of available actions commands to be executed |
