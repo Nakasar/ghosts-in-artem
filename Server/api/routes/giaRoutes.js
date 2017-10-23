@@ -13,6 +13,9 @@ module.exports = function(app) {
     .put(user.create_user)
     .delete(user.delete_user);
 
+    app.route('/users/phones')
+    .get(user.list_phones);
+
     app.route('/users/:userId/connects')
     .get(user.user_connect_get)
     .post(user.user_connect_add)
