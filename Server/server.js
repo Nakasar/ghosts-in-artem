@@ -14,6 +14,12 @@ app.use(bodyParser.urlencoded({ 'extended': true}));
 app.use(bodyParser.json())
 
 var routes = require('./api/routes/giaRoutes');
+
+app.all('/*',function(req, res, next){
+  res.header("Access-Control-Allow-Origin","*");
+  next();
+});
+
 routes(app);
 
 app.listen(port);

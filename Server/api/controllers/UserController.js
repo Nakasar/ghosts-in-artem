@@ -12,7 +12,7 @@ exports.list_users = function(req, res) {
 };
 
 exports.list_phones = function(req, res) {
-    User.find({}, "bt_mac _id", function(err, users) {
+    User.find({},"bt_mac _id", function(err, users) {
         if (err) {
             res.send(err);
         } else {
