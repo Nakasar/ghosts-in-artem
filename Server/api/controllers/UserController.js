@@ -75,7 +75,7 @@ exports.user_connect_add = function(req, res) {
                     res.send(err);
                 }
 
-                res.send( { success : 'Connection taken into account' });
+                res.send( { success : true, user: user });
             });
         }
     })
