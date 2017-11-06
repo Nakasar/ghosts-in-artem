@@ -2,7 +2,7 @@
 <ul class="users">
     <li *ngFor="let user of users" (click)="onSelect(user)" [class.selected]="user == selectedUser">
         <span class="badge">{{user.id}}</span>
-        <span>{{user.nick_name}}</span>
+        <span>{{user.name}}</span>
         <button class="delete" (click)="delete(user); $event.stopPropagation()">x</button>
     </li>
 </ul>

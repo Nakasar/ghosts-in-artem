@@ -8,7 +8,7 @@ var UserSchema = new Schema({
         required: 'user should have a name'
     },
     created_date: {
-        type: String,
+        type: Date,
         default: Date.now
     },
     bt_mac: {
@@ -20,18 +20,16 @@ var UserSchema = new Schema({
         default: '0'
     },
     role: {
-        type: [{
-            type: String,
-            enum: ['mentor', 'master', 'ghosts', 'depinfo', 'others']
-        }],
-        default: ['others']
+      type: String,
+      enum: ['mentor', 'master', 'ghosts', 'depinfo', 'others']
+      default: 'others',
     },
     class: {
-        type: [{
+        type: {
             type: String,
             enum: ['peon']
-        }],
-        default: ['peon']
+        },
+        default: 'peon'
     },
     connects: [{
         date: Date,

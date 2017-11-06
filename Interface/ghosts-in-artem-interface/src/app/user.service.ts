@@ -23,7 +23,7 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  getUser(id: number): Promise<User> {
+  getUser(id: Number): Promise<User> {
     const url = `${this.apiUrl + this.API_USERS}/${id}`;
     return this.http.get(url)
       .toPromise()
@@ -48,7 +48,7 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  deleteUser(id: number): Promise<void> {
+  deleteUser(id: Number): Promise<void> {
     const url = `${this.apiUrl + this.API_USERS}/${id}`;
     return this.http.delete(url, {headers: this.headers})
       .toPromise()

@@ -12,12 +12,13 @@ var StationSchema = new Schema({
     type : String,
     required : ' A station should have an IP address'
   },
-  actions_list : [{
-    type: {
-        type: String,
-        enum : ['salute', 'popGhost','sendingMessage']
-    }
-  }]
+  mac_address: {
+    type: String,
+    required: 'A station should have a mac address'
+  },
+  actions_list : {
+    type: [String]
+  }
 });
 
 module.exports = mongoose.model('Stations', StationSchema);
