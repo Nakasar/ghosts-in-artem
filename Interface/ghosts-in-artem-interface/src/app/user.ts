@@ -1,6 +1,5 @@
 export class User {
-    id: Number;
-    apiId: String;
+    _id: String;
     name: String;
     created_date: Date;
     bt_mac: String;
