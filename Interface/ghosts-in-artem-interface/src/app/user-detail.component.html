@@ -1,13 +1,31 @@
 <div *ngIf="user">
     <h2>{{user.name}} details!</h2>
-    <div><label>id: </label>{{user.id}}</div>
+    <div><label>id: </label>{{user._id}}</div>
     <div>
       <label>Nickname: </label>
       <input [(ngModel)]="user.name" placeholder="nickname"/>
     </div>
-    <div><label>Role: </label>{{user.role}}</div>
-    <div><label>Profession: </label>{{user.class}}</div>
+    <div>
+      <label>Role: </label>
+      <select class="form-control" id="role" required
+        [(ngModel)]="user.role" name="role">
+        <option *ngFor="let role of roles" [value]="role">{{role}}</option>
+      </select>
+    </div>
+    <div>
+      <label>Profession: </label>
+      <select class="form-control" id="class" required
+        [(ngModel)]="user.class" name="class">
+        <option *ngFor="let class of classes" [value]="class">{{class}}</option>
+      </select>
+    </div>
     <div><label>Phone address: </label>{{user.bt_mac}}</div>
+    <div *ngIf="failure_alert" class="alert alert-danger box-msg" role="alert">
+      {{failure_message}}
+    </div>
+    <div *ngIf="success_alert" class="alert alert-success box-msg" role="alert">
+      Utilisateur sauvegardé.
+    </div>
     <button (click)="save()">Save</button>
     <button (click)="goBack()">Back</button>
 </div>
