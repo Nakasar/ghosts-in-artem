@@ -16,6 +16,7 @@ export class UserDetailComponent implements OnInit {
   failure_alert: Boolean;
   failure_message: String;
   success_alert: Boolean;
+  roles = ["other", "mentor"];
 
   constructor(
     private userService: UserService,
@@ -43,6 +44,6 @@ export class UserDetailComponent implements OnInit {
   }
 
   displayAlert(message: String): void {
-    
+
   }
 }

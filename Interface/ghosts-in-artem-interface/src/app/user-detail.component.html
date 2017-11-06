@@ -5,22 +5,25 @@
       <label>Nickname: </label>
       <input [(ngModel)]="user.name" placeholder="nickname"/>
     </div>
-    <div><label>Role: </label><SELECT name="role" size="1">
-<OPTION>mentor
-<OPTION>master
-<OPTION>ghosts
-<OPTION>depinfo
-<OPTION>others
-</SELECT></div>
-    <div><label>Profession: </label><SELECT name="class" size="1">
-<OPTION>peon
-<OPTION>vampire
-</SELECT></div>
+    <div>
+      <label>Role: </label>
+      <select class="form-control" id="role" required
+        [(ngModel)]="user.role" name="role">
+        <option *ngFor="let role of roles" [value]="role">{{role}}</option>
+      </select>
+    </div>
+    <div>
+      <label>Profession: </label>
+      <SELECT name="class" size="1">
+        <OPTION>peon
+        <OPTION>vampire
+      </SELECT>
+    </div>
     <div><label>Phone address: </label>{{user.bt_mac}}</div>
     <div *ngIf="failure_alert" class="alert alert-danger box-msg" role="alert">
       {{failure_message}}
     </div>
-    <div *ngIf="success_alert" class="alert alert-sucess box-msg" role="alert">
+    <div *ngIf="success_alert" class="alert alert-success box-msg" role="alert">
       Utilisateur sauvegardé.
     </div>
     <button (click)="save()">Save</button>
