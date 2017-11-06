@@ -25,10 +25,8 @@ var UserSchema = new Schema({
       default: 'others',
     },
     class: {
-        type: {
-            type: String,
-            enum: ['peon']
-        },
+        type: String,
+        enum: ['vampire', 'peon'],
         default: 'peon'
     },
     connects: [{
