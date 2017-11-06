@@ -7,7 +7,7 @@ module.exports = function(app) {
     app.route('/users')
     .get(user.list_users)
     .post(user.create_user);
-    
+
     app.route('/users/phones')
     .get(user.list_phones);
 

@@ -16,7 +16,8 @@ export class UserDetailComponent implements OnInit {
   failure_alert: Boolean;
   failure_message: String;
   success_alert: Boolean;
-  roles = ["other", "mentor"];
+  roles = ["other", "mentor", "depinfo", "ghosts", "master"];
+  classes = ["vampire", "peon"];
 
   constructor(
     private userService: UserService,

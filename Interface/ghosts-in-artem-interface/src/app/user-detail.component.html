@@ -14,10 +14,10 @@
     </div>
     <div>
       <label>Profession: </label>
-      <SELECT name="class" size="1">
-        <OPTION>peon
-        <OPTION>vampire
-      </SELECT>
+      <select class="form-control" id="class" required
+        [(ngModel)]="user.class" name="class">
+        <option *ngFor="let class of classes" [value]="class">{{class}}</option>
+      </select>
     </div>
     <div><label>Phone address: </label>{{user.bt_mac}}</div>
     <div *ngIf="failure_alert" class="alert alert-danger box-msg" role="alert">
