@@ -16,6 +16,7 @@ app.use(bodyParser.json())
 var routes = require('./api/routes/giaRoutes');
 
 app.all('/*',function(req, res, next){
+  console.log(req);
   res.header("Access-Control-Allow-Origin","*");
   next();
 });
