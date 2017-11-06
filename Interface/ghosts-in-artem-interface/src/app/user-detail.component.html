@@ -8,6 +8,12 @@
     <div><label>Role: </label>{{user.role}}</div>
     <div><label>Profession: </label>{{user.class}}</div>
     <div><label>Phone address: </label>{{user.bt_mac}}</div>
+    <div *ngIf="failure_alert" class="alert alert-danger box-msg" role="alert">
+      {{failure_message}}
+    </div>
+    <div *ngIf="success_alert" class="alert alert-sucess box-msg" role="alert">
+      Utilisateur sauvegardé.
+    </div>
     <button (click)="save()">Save</button>
     <button (click)="goBack()">Back</button>
 </div>

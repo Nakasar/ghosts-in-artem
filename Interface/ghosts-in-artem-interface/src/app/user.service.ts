@@ -34,9 +34,15 @@ export class UserService {
   updateUser(user: User): Promise<User> {
     const url = `${this.apiUrl + this.API_USERS}/${user._id}`;
     return this.http
-    .put(url, JSON.stringify(user), {headers: this.headers})
+      .put(url, JSON.stringify(user), {headers: this.headers})
       .toPromise()
-      .then(() => user)
+      .then(res => {
+        if (res.json().success) {
+          return res.json().user as User;
+        } else {
+          throw new Error(res.json().message);
+        }
+      })
       .catch(this.handleError);
   }
 
