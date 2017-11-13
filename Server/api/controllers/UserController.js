@@ -1,5 +1,5 @@
 'use strict';
-var mongoose = require('mongoose'), User = mongoose.model('Users');
+var mongoose = require('mongoose'), User = mongoose.model('Users'), Station = mongoose.model('Stations'), http = require('http');
 
 exports.list_users = function(req, res) {
     User.find({}, function(err, users) {
@@ -27,6 +27,18 @@ exports.create_user = function(req, res) {
         if (err) {
             return res.json({ success: false, message: err });;
         } else {
+            // Update user lists of stations
+
+            Station.find({}, function(err, stations) {
+                if (err) {
+
+                } else {
+                    for (var i = 0; i < stations.length; i++) {
+                        
+                    }
+                }
+            });
+
             return res.json({ success: true, user: user });
         }
     });
