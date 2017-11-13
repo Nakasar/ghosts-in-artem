@@ -90,7 +90,7 @@ app.get('/detect', function (req, res) {
 					}).on('error', (err) => {
 						//console.log("Error: " + err.message);
 					});
-					io.emit('someonehere', 'Go play, noob!');
+					io.emit('someonehere', connected_user[i]["_id"]);
 					console.log('Discovered Peripheral : ' + peripheral.address + ' RSSI:' + peripheral.rssi)
 
 				}
@@ -101,12 +101,17 @@ app.get('/detect', function (req, res) {
 
 app.get('/music_list', function (req, res) {
 	var array = fs.readdirSync(path.join(__dirname, 'public/audio'));
-	var result = []
-
-	array.forEach(function (element) {
-		result.push("audio/".concat(element));
+	var result = {}
+	
+	array.forEach(function(element){
+		
+		result[element.toString()] = []
+		var a = fs.readdirSync(path.join(__dirname, 'public/audio', element.toString()));
+		a.forEach(function(e){
+			result[element.toString()].push('audio/'.concat(element, '/', e))
+		});
 	});
-
+	
 	res.send(result);
 });
 
@@ -121,12 +126,11 @@ io.on('connection', function (socket) {
 		console.log('a player send: ' + msg);
 	});
 });
-
-app.get('/go_play', function (req, res) {
-
-	// Procédure pour jouer un son (à mettre n'importe où et le message osef)...
-	io.emit('someonehere', 'Go play, noob!');
-
+app.get('/go_play', function(req, res){
+	
+	// Procédure pour jouer un son (à mettre n'importe où et le message donne le répertoire)...
+	io.emit('someonehere', 'default');
+	
 });
 
 console.log("...complete!");

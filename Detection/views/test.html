@@ -20,7 +20,7 @@ Ghost in Artem...
 <script>
 $(document).ready(function () {
 	// Dès le document prêt, on lance la requête pour récup les musiques.
-	$.ajax("//localhost:3000/music_list", 
+	$.ajax("music_list", 
 	{
 		complete: function (jqXHR, textStatus){
 			// quelque soit le status de la requête, on l'affiche.
@@ -59,8 +59,8 @@ $(document).ready(function () {
 					socket.on('someonehere', function(msg){
 						// Si on est prêt, on joue, sinon on fait rien.
 						if ($(status).data("status") === "ready"){
-							// On joue une piste aléatoire de la playlist.
-							sound.skipTo(Math.floor(Math.random() * data.length));
+							// On joue une piste aléatoire de la playlist du répertoire de msg.
+							sound.skipTo(msg);
 							
 							// On change le status pour dire que l'on joue.
 							$(status).data("status", 'playing');
