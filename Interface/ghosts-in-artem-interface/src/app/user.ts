@@ -1,9 +1,10 @@
 export class User {
-    id: number;
-    first_name: String;
-    last_name: String;
-    nick_name: String;
-    phone_id: String;
+    _id: String;
+    name: String;
+    created_date: Date;
+    bt_mac: String;
+    score: String;
     role: String;
-    profession: String;
+    class: String;
+    connects: [{ date: Date, station_id: String }]
 }

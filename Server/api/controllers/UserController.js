@@ -1,5 +1,5 @@
 'use strict';
-var mongoose = require('mongoose'), User = mongoose.model('Users');
+var mongoose = require('mongoose'), User = mongoose.model('Users'), Station = mongoose.model('Stations'), http = require('http');
 
 exports.list_users = function(req, res) {
     User.find({}, function(err, users) {
@@ -25,9 +25,34 @@ exports.create_user = function(req, res) {
     var new_user = new User(req.body);
     new_user.save(function(err, user) {
         if (err) {
-            res.send(err);
+            return res.json({ success: false, message: err });;
         } else {
-            res.json(user);
+            // Update user lists of stations
+
+            Station.find({}, function(err, stations) {
+                if (err) {
+
+                } else {
+                    for (var i = 0; i < stations.length; i++) {
+                        
+                    }
+                }
+            });
+
+            return res.json({ success: true, user: user });
+        }
+    });
+};
+
+exports.update_user = function(req, res) {
+    if (req.body.name.length == 0) {
+        return res.json({ success: false, message: "User nickname should not be empty." });
+    }
+    User.findOneAndUpdate({ _id: req.params.userId }, req.body, { new: true }, function(err, user) {
+        if (err) {
+            return res.json({ success: false, message: err });
+        } else {
+            return res.json({ success: true, user: user });
         }
     });
 };

@@ -1,6 +1,7 @@
 export class station {
-    id: number;
+    _id: String;
+    name: String;
     ip_address: String;
     mac_address: String;
-    actions: [String];
+    actions_list: [String];
 }

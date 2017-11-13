@@ -13,6 +13,11 @@ import { UserService } from './user.service';
 })
 export class UserDetailComponent implements OnInit {
   user: User;
+  failure_alert: Boolean;
+  failure_message: String;
+  success_alert: Boolean;
+  roles = ["other", "mentor", "depinfo", "ghosts", "master"];
+  classes = ["vampire", "peon"];
 
   constructor(
     private userService: UserService,
@@ -21,8 +26,9 @@ export class UserDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.failure_alert = false;
     this.route.paramMap
-      .switchMap((params: ParamMap) => this.userService.getUser(+params.get('id')))
+      .switchMap((params: ParamMap) => this.userService.getUser(params.get('id')))
       .subscribe(user => this.user = user);
   }
 
@@ -32,6 +38,13 @@ export class UserDetailComponent implements OnInit {
 
   save(): void {
     this.userService.updateUser(this.user)
-      .then(() => this.goBack());
+      .then(user => {
+        this.success_alert = true;
+      })
+      .catch(this.displayAlert);
+  }
+
+  displayAlert(message: String): void {
+
   }
 }

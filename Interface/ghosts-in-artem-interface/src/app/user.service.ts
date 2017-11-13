@@ -7,7 +7,7 @@ import { User } from './user';
 
 @Injectable()
 export class UserService {
-  private apiUrl = 'api';  // URL to web api
+  private apiUrl = 'http://192.168.1.206:3000';  // URL to web api
   private API_USERS = '/users';
 
   private headers = new Headers({'Content-Type': 'application/json'});
@@ -23,7 +23,7 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  getUser(id: number): Promise<User> {
+  getUser(id: String): Promise<User> {
     const url = `${this.apiUrl + this.API_USERS}/${id}`;
     return this.http.get(url)
       .toPromise()
@@ -32,11 +32,17 @@ export class UserService {
   }
 
   updateUser(user: User): Promise<User> {
-    const url = `${this.apiUrl + this.API_USERS}/${user.id}`;
+    const url = `${this.apiUrl + this.API_USERS}/${user._id}`;
     return this.http
-    .put(url, JSON.stringify(user), {headers: this.headers})
+      .put(url, JSON.stringify(user), {headers: this.headers})
       .toPromise()
-      .then(() => user)
+      .then(res => {
+        if (res.json().success) {
+          return res.json().user as User;
+        } else {
+          throw new Error(res.json().message);
+        }
+      })
       .catch(this.handleError);
   }
 
@@ -48,7 +54,7 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  deleteUser(id: number): Promise<void> {
+  deleteUser(id: String): Promise<void> {
     const url = `${this.apiUrl + this.API_USERS}/${id}`;
     return this.http.delete(url, {headers: this.headers})
       .toPromise()
