@@ -5,20 +5,46 @@ const bluetooth = require('node-bluetooth');
 
 
 app.get('/', function (req, res) {
-	// create bluetooth device instance 
-	const device = new bluetooth.DeviceINQ();
-device.on('finished',  console.log.bind(console, 'finished'))
-datas = '{';
-device.on('found', function found(address, name){
-console.log('Found: ' + address + ' with name ' + name);
-res.write('Found: ' + address + ' with name ' + name + '\n','utf-8');
-datas = datas + '"' + name + '":"' + address + '",';
-}).inquire();
-res.end()
-datas = datas.substr(0,datas.length-1) + '}';
-console.log(datas);
-var obj = JSON.parse(datas); 
-console.log(obj);
+
+  var noble = require('noble');
+  /*
+  noble.on('stateChange', function (state) {
+    if (state === 'poweredOn') {
+      noble.startScanning([], true);
+    } else {
+      noble.stopScanning();
+    }
+  });
+  */
+
+  setInterval(function () {
+    noble.startScanning([], true);
+    noble.on('discover', function (peripheral) {
+      if (peripheral.uuid === "f739b666ede9") {
+        console.log('Discovered Peripheral : ' + peripheral.uuid + ' RSSI:' + peripheral.rssi);
+        /*
+        peripheral.connect(function (error) {
+          if (error == undefined) {
+            console.log(peripheral.uuid + ' RSSI:' + peripheral.rssi);
+          } else {
+            console.log(peripheral.uuid + ' RSSI:' + peripheral.rssi + ' Connecting, Error : ' + error);
+          }
+        });/*
+        peripheral.updateRssi(function (error, rssi) {
+          console.log(peripheral.uuid + ' RSSI:' + peripheral.rssi + ' update RSSI + ' + rssi + ' : Error :' + error);
+        });
+  
+        peripheral.on('connect', function () {
+          console.log(peripheral.uuid + ' RSSI:' + peripheral.rssi + ' Has conected');
+        });
+        peripheral.on('rssiUpdate', function (rssi) {
+          console.log(peripheral.uuid + ' RSSI updated : ' + rssi);
+  
+        });*/
+
+      }
+    });
+  }, 2000)
 })
 
 app.listen(3000, function () {
