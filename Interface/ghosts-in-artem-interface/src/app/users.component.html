@@ -1,4 +1,25 @@
 <h3>User list</h3>
+
+<div>
+    <button (click)="showHide = !showHide;">Add User</button>
+    <div *ngIf = "showHide">
+      <form #f = "ngForm">
+      <div>
+    <label> Nickname </label>
+    <input name = "nick_name" ngModel placeholder="write nickname"/>
+      </div>
+  <div>
+    <label> mac_address </label>
+    <input name = "mac_address" ngModel placeholder="write bt_address"/>
+  </div>
+    <div>
+    <button (click)="addUser(f)">Create</button>
+    </div>
+  </form>
+</div>
+</div>
+
+
 <ul class="users">
     <li *ngFor="let user of users" (click)="onSelect(user)" [class.selected]="user == selectedUser">
         <span>{{user.name}}</span>

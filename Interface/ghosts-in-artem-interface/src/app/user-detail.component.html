@@ -19,7 +19,8 @@
         <option *ngFor="let class of classes" [value]="class">{{class}}</option>
       </select>
     </div>
-    <div><label>Phone address: </label>{{user.bt_mac}}</div>
+    <div><label>Phone address: </label>
+      <input [(ngModel)]="user.bt_mac" placeholder = "phoneAddress"/>
     <div *ngIf="failure_alert" class="alert alert-danger box-msg" role="alert">
       {{failure_message}}
     </div>

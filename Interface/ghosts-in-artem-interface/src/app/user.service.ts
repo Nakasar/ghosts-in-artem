@@ -46,9 +46,9 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  createUser(nick_name: string): Promise<User> {
+  createUser(nick_name: string, mac_address : string): Promise<User> {
     return this.http
-      .post(this.apiUrl + this.API_USERS, JSON.stringify({nick_name: name}), {headers: this.headers})
+      .post(this.apiUrl + this.API_USERS, JSON.stringify({name: nick_name, bt_mac: mac_address}), {headers: this.headers})
       .toPromise()
       .then(res => res.json() as User)
       .catch(this.handleError);
