@@ -14,6 +14,7 @@ import { UserService } from './user.service';
 export class UsersComponent implements OnInit {
   users: User[];
   selectedUser: User;
+  showHide = false;
 
   constructor(
     private router: Router,
