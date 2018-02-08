@@ -30,7 +30,7 @@ npm install
 
 Si l'installation a fonctionnée, après déploiement vous aurez:
 
-![Serveur en fonctionnement](https://github.com/Nakasar/ghosts-in-artem/edit/rc/Son/images/test.PNG "mise en route...")
+![Serveur en fonctionnement](images/test.PNG "mise en route...")
 
 ## Déploiement
 
@@ -49,4 +49,4 @@ Et toutes les instances connectées jouerons un son aléatoire. Si vous avez con
 * **Stanislas Barbillon** - *développeur du package* - [StanBarbeau](https://github.com/StanBarbeau)
 
 
-![Une image de chat parce que voila](https://github.com/Nakasar/ghosts-in-artem/edit/rc/Son/public/chat-bien-etre.jpg)
+![Une image de chat parce que voila](public/chat-bien-etre.jpg)
