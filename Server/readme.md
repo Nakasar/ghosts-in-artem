@@ -40,10 +40,11 @@ Init project after cloning repository. Then proceed to start using `npm run star
 - Stop mongoDB instance using `sudo service mongod stop`.
 
 ### API
-Access to API endpoints on local machine using `http://localhost:3000/`.  
+Access to API endpoints on local machine using `http://localhost:3000/api`.  
 Access users endpoint at `/users`, and specific user using `/users/<user_id>`. (Usage of postman chrome extension is recommended).  
 Access list of users' phone bluetooth mac address using `/users/phones`.  
 Access stations endpoint at `/stations`, and specific station using `/stations/<station_id>`.
+Add a user connexion to a station at `/users/<user_id>/connect`.
 
 #### Models
 
@@ -64,3 +65,7 @@ Access stations endpoint at `/stations`, and specific station using `/stations/<
 | ip\_address | String | ip address of station |
 | mac\_address | String | mac address of station |
 | actions | [String] | array of available actions commands to be executed |
+
+Tutorial
+-
+[Développer et déployer des applications web en NodeJS](https://github.com/Nakasar/ghosts-in-artem/blob/rc/Server/D%C3%A9velopper%20des%20Applications%20Web.pdf)
