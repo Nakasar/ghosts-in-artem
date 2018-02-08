@@ -2,3 +2,9 @@
 
 # ghosts-in-artem
 [Discord](https://discord.gg/TRVucQt)
+
+## Documentation
+[Interface](https://github.com/Nakasar/ghosts-in-artem/tree/master/Interface)
+[Game Server](https://github.com/Nakasar/ghosts-in-artem/tree/master/Server)
+[Game Station](https://github.com/Nakasar/ghosts-in-artem/tree/master/Detection)
+[ROSKate](https://github.com/Nakasar/ghosts-in-artem/tree/master/Roskate)
