@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Ghost in Artem</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.5/howler.core.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/js/player.js"></script>
+</head>
+
+<body>
+<div >
+Ghost in Artem...
+<div id="audio_status">
+
+</div>
+</div>
+                           
+<script>
+$(document).ready(function () {
+	// Dès le document prêt, on lance la requête pour récup les musiques.
+	$.ajax("music_list", 
+	{
+		complete: function (jqXHR, textStatus){
+			// quelque soit le status de la requête, on l'affiche.
+			console.log(textStatus);
+		},
+		
+		dataType:"json", // On doit récup du JSON.
+		
+		success: function(data, textStatus, jqXHR){
+			// En case de réussite, on print les données récupérées.
+			console.log(data);
+			
+			// On initialise le status à 'loading'...
+			var status = $('#audio_status');
+			$(status).data("status", "loading");
+			// ... (et on l'affiche).
+			console.log($(status).data('status'));
+			
+			// On créer le Player qui va jouer la playlist a la demande.
+			var sound = new Player(data);
+			
+			$(sound).ready(function(){
+				// Dès que le player est prêt, on lance la connection io.
+				var socket = io();
+				
+				$(socket).ready(function(){
+					// Dès que le socket est prêt, on change les status...
+					$(status).data("status", 'ready');
+					// ...(et on l'affiche).
+					console.log($(status).data("status"));
+					
+					// On dit qu'on est prêt (pas d'incidence).
+					socket.emit('player status', $(status).data('status'));
+					
+					// On écoute les messages 'someonehere'.
+					socket.on('someonehere', function(msg){
+						// Si on est prêt, on joue, sinon on fait rien.
+						if ($(status).data("status") === "ready"){
+							// On joue une piste aléatoire de la playlist du répertoire de msg.
+							sound.skipTo(msg);
+							
+							// On change le status pour dire que l'on joue.
+							$(status).data("status", 'playing');
+						}
+					});
+				});
+			});
+		}
+	})
+	
+	
+});
+</script> 
+</body>
+</html>
