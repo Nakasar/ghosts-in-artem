@@ -16,6 +16,7 @@ app.use(bodyParser.json())
 
 app.use(cors());
 
+var apiRoutes = express.Router();
 var routes = require('./api/routes/giaRoutes');
 
 app.all('/*',function(req, res, next){
@@ -24,7 +25,9 @@ app.all('/*',function(req, res, next){
   next();
 });
 
-routes(app);
+routes(apiRoutes);
+
+app.use('/api', apiRoutes);
 
 app.listen(port);
 
