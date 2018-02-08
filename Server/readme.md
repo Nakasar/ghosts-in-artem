@@ -65,3 +65,7 @@ Add a user connexion to a station at `/users/<user_id>/connect`.
 | ip\_address | String | ip address of station |
 | mac\_address | String | mac address of station |
 | actions | [String] | array of available actions commands to be executed |
+
+Tutorial
+-
+[Développer et déployer des applications web en NodeJS](https://github.com/Nakasar/ghosts-in-artem/blob/rc/Server/D%C3%A9velopper%20des%20Applications%20Web.pdf)

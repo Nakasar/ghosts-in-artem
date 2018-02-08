@@ -28,7 +28,7 @@ app.route('/:server_address/found/:bt_address').get(function (req, res) {
 	http.get({
 		hostname: server,
 		port: 3000,
-		path: '/users/phones'
+		path: '/api/users/phones'
 	}, (response) => {
 		var data = '';
 		response.on('data', (chunk) => {
@@ -50,7 +50,7 @@ app.get('/', function (req, res) {
 	http.get({
 		hostname: '192.168.1.206',
 		port: 3000,
-		path: '/users/phones'
+		path: '/api/users/phones'
 	}, (response) => {
 		var data = '';
 		response.on('data', (chunk) => {
@@ -77,7 +77,7 @@ app.get('/detect', function (req, res) {
 					http.get({
 						hostname: '192.168.1.206',
 						port: 3000,
-						path: '/users/' + connected_user[i]["_id"]
+						path: '/api/users/' + connected_user[i]["_id"]
 					}, (response) => {
 						var data = '';
 						response.on('data', (chunk) => {
