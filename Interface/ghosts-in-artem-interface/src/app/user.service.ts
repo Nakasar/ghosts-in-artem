@@ -7,7 +7,7 @@ import { User } from './user';
 
 @Injectable()
 export class UserService {
-  private apiUrl = 'http://192.168.1.206:3000';  // URL to web api
+  private apiUrl = 'http://192.168.1.206:3000/api';  // URL to web api
   private API_USERS = '/users';
 
   private headers = new Headers({'Content-Type': 'application/json'});
